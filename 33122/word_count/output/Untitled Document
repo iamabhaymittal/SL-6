@@ -1,0 +1,159 @@
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -mkdir -p/usr/local/hadoop/33122
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+-mkdir: Illegal option -p/usr/local/hadoop/33122
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-x] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are
+-conf <configuration file>     specify an application configuration file
+-D <property=value>            use value for given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>    specify a ResourceManager
+-files <comma separated list of files>    specify comma separated files to be copied to the map reduce cluster
+-libjars <comma separated list of jars>    specify comma separated jar files to include in the classpath.
+-archives <comma separated list of archives>    specify comma separated archives to be unarchived on the compute machines.
+
+The general command line syntax is
+command [genericOptions] [commandOptions]
+
+Usage: hadoop fs [generic options] -mkdir [-p] <path> ...
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -mkdir -p /usr/local/hadoop/33122
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:26:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -mkdir -p /usr/local/hadoop/33122/input
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:27:36 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hduser@DBMSLAB-A3-305-11:~$ 
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -copyFromLocal /home/hduser/33122/word_count/input/file1 /usr/local/hadoop/33122/input
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:31:07 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -copyFromLocal /home/hduser/33122/word_count/input/file2 /usr/local/hadoop/33122/input
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:31:26 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hduser@DBMSLAB-A3-305-11:~$ hadoop jar /home/hduser/33122/word_count/wc.jar /usr/local/hadoop/33122/input /usr/local/hadoop/33122/output
+19/12/28 09:34:28 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/12/28 09:34:28 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/12/28 09:34:28 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/12/28 09:34:29 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+19/12/28 09:34:29 INFO mapred.FileInputFormat: Total input files to process : 2
+19/12/28 09:34:29 INFO mapreduce.JobSubmitter: number of splits:3
+19/12/28 09:34:30 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1577504765303_0001
+19/12/28 09:34:30 INFO impl.YarnClientImpl: Submitted application application_1577504765303_0001
+19/12/28 09:34:30 INFO mapreduce.Job: The url to track the job: http://localhost:8088/proxy/application_1577504765303_0001/
+19/12/28 09:34:30 INFO mapreduce.Job: Running job: job_1577504765303_0001
+hduser@DBMSLAB-A3-305-11:~$ hadoop jar /home/hduser/33122/word_count/wc.jar /usr/local/hadoop/33122/input /usr/local/hadoop/33122/output
+19/12/28 09:37:09 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/12/28 09:37:09 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/12/28 09:37:09 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+Exception in thread "main" org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:54310/usr/local/hadoop/33122/output already exists
+	at org.apache.hadoop.mapred.FileOutputFormat.checkOutputSpecs(FileOutputFormat.java:131)
+	at org.apache.hadoop.mapreduce.JobSubmitter.checkSpecs(JobSubmitter.java:270)
+	at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:141)
+	at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1341)
+	at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1338)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1836)
+	at org.apache.hadoop.mapreduce.Job.submit(Job.java:1338)
+	at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:575)
+	at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:570)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1836)
+	at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:570)
+	at org.apache.hadoop.mapred.JobClient.submitJob(JobClient.java:561)
+	at org.apache.hadoop.mapred.JobClient.runJob(JobClient.java:870)
+	at org.myorg.WordCount.main(WordCount.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:234)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:148)
+hduser@DBMSLAB-A3-305-11:~$ 
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -cat /usr/local/hadoop/33122/output/part-0000
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:41:14 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+cat: `/usr/local/hadoop/33122/output/part-0000': No such file or directory
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -cat /usr/local/hadoop/33122/output/part-00000
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:41:41 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+abhay	1
+bear	2
+car	18
+dear	2
+dendu	2
+mittal	2
+river	2
+
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -rm -r /usr/local/hadoop/33122/output
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:47:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Deleted /usr/local/hadoop/33122/output
+hduser@DBMSLAB-A3-305-11:~$ hadoop dfs -rm -r /usr/local/hadoop/33122/input
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+19/12/28 09:48:00 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Deleted /usr/local/hadoop/33122/input
+hduser@DBMSLAB-A3-305-11:~$ 
+
+
+
+
+
