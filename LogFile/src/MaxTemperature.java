@@ -29,6 +29,7 @@ public class MaxTemperature {
 				}
 		}
 	}
+
 	public static class MaxTemperatureReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 		@Override
 		public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
@@ -44,6 +45,7 @@ public class MaxTemperature {
 			context.write(key, new IntWritable(sum));
 		}
 	}
+
 	public static void main(String[] args) throws Exception {
 		if (args.length != 2) {
 			System.err.println("Usage: MaxTemperature <input path> <output path>");
