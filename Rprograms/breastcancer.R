@@ -1,11 +1,13 @@
-getwd()
+v <-(t
+     getwd()
 
 
 #loading dataset
 data <- read.csv("/home/pict/Desktop/Sl-VI DataSets/BreastCancer/BreastCancerWc.csv",header = F)
 head(data)
-
-
+colnames(data)
+str(data)
+boxplot(data)
 help("setwd")
 setwd("/home/pict/Documents/SL-VI/")
 
