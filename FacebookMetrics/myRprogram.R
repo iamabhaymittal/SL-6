@@ -1,5 +1,5 @@
 
-myString <- "my name is abhay"
+myString <- "my name is ankit"
 print(myString)
 sample_vector <- c(10,'abc')
 print(sample_vector)
@@ -33,7 +33,7 @@ myvars <- c("V1","V3","V6")
 namevars <- c("Page.total.likes","Type","Paid")
 
 new_data <- fb_data[myvars]
-name_new_data <- fb_data[namevars]
+  name_new_data <- fb_data[namevars]
 
 head(new_data)
 head(name_new_data)
@@ -46,3 +46,4 @@ head(sub_data)
 names(name_new_data)
 sub_data_name <- subset(name_new_data, Type == "Photo")
 sub_data_name
+

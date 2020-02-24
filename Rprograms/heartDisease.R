@@ -21,38 +21,25 @@ cleavdf[is.na()]
 
 
 
-
+help("cor")
 
 
 
 ##########
 
-age       
-sex       
-cp        
-trestbps  
-chol   
-fbs       
-restecg   
-thalach   
-exang     
-oldpeak   
-slope     
-ca        
-thal      
-num
+col_names = c("age","sex","cp","trestbps","chol","fbs","restecg","thalach","exang","oldpeak","slope","ca","thal","num")
 ####
 
 #Read HeartDisease.CSV
-hdata=read.csv(file="/home/pict/Desktop/Sl-VI DataSets/HeartDisease/Cleavland.csv",header=TRUE,sep=",")
+hdata=read.csv(file="/home/pict/Desktop/Sl-VI DataSets/HeartDisease/Cleavland.csv",header=TRUE,sep=",",col.names = col_names)
 names(hdata)
 str(hdata)
 dim(hdata)
 # dumifying variable num, if num!-0means,
-hdata$num[hdata$X0>0]<-1
-summary(hdata$X0)
+hdata$num[hdata$num>0]<-1
+summary(hdata$num)
 # barplot fate(i.e. hear disease 1 or not 0)
-barplot(table(hdata$X0), main="Fate", col="black")
+barplot(table(hdata$num), main="Fate", col="black")
 #plot sex vs fate using mosaicplot
 mosaicplot(hdata$sex ~ hdata$num,main="Fate by Gender",
            shade=FALSE,color=TRUE,xlab="Gender", ylab="Heart disease")
@@ -64,16 +51,32 @@ levels(hdata$thal)[levels(hdata$thal)=="?"]<-NA
 table(hdata$thal)
 # 3 6 7
 # 166 18 117
+
+#
+str(hdata$thal)
+help(levels)
+
 #replacing NA with max factor
+str(hdata)
+hdata$thal
+
+hdata$thal<-as.numeric(as.character(hdata$thal))
+hdata$thal
 hdata$thal[is.na(hdata$thal)]<-3
+#hdata$ca
 table(hdata$thal)
 # 3 6 7
 # 168 18 117
 levels(hdata$ca)[levels(hdata$ca)=="?"]<-NA
+hdata$ca
+
+hdata$ca<-as.numeric(as.character(hdata$ca))
+hdata$ca
+
 table(hdata$ca)
 # 0 1 2 3
 # 176 65 38 20
-h$ca[is.na(hdata$ca)]<-0
+hdata$ca[is.na(hdata$ca)]<-0
 table(hdata$ca)
 # 0 1 2 3
 # 180 65 38 20
@@ -90,8 +93,8 @@ test_hdata = subset(hdata, split == FALSE)
 #You can use following code for creating training and testing samples,
 #but you cannot get random samples which is possible with above split and subset
 function
-# train_hdata=hdata[1:212,]
-# test_hdata=hdata[213:303,]
+train_hdata=hdata[1:212,]
+test_hdata=hdata[213:302,]
 dim(train_hdata)
 #[1] 212 14
 dim(test_hdata)
@@ -114,6 +117,9 @@ rage=round(round_age)
 # Displaying the accuracy using confusion Matrix
 library(e1071)
 library(caret)
+help(table)
+table(rage)
+table(test_hdata$num)
 df=confusionMatrix(rage,test_hdata$num)
 # Confusion Matrix and Statistics
 # Reference
@@ -186,10 +192,12 @@ df=confusionMatrix(rage,test_hdata$num)
   # Technique 3: k-Nearest Neighbour claasifer
   # Prediction using KNN
   # Use data transformation technique such as scaling and normalization for
-  normalizing dataset
+  #normalizing dataset
 # Writting the function for normalizing the values of all variables
+
 normalize <- function(x) {
   return ((x - min(x)) / (max(x) - min(x))) }
+
 h1data<-hdata
 # using Normalize function and applying it on dataset
 h1data_n <- as.data.frame(lapply(h1data[1:11], normalize))
@@ -270,9 +278,9 @@ classifier <- naiveBayes(num
 prediction <- predict(classifier, testnb_hdata ,type="class")
 prediction
 # [1] 0 0 0 1 0 1 1 0 0 0 0 1 1 0 0 0 1 1 0 1 0 0 0 1 1 1 0 0 0 0 0 0 0 1 0 1 0
-0 1 1 1 0 0 0
+#0 1 1 1 0 0 0
 # [45] 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 0 1 1 0 1 0 0 1 1 0 0 0 1 0 1
-1 1 0 1 0 0 1
+#1 1 0 1 0 0 1
 # [89] 1 0 0
 # Levels: 0 1
 table(prediction, h1data[213:303,14])
@@ -280,6 +288,8 @@ table(prediction, h1data[213:303,14])
 # 0 41 18
 # 1 7 25
 # Displaying the accuracy using confusion Matrix
+library(lattice)
+library(ggplot2)
 library(e1071)
 library(caret)
 df=confusionMatrix(h1data[213:303,14],prediction)
